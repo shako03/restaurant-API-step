@@ -14,7 +14,7 @@
 //             `            
 //             <div class="box">
 //                          <div class="img-cont" style = "background-image: url(${el.image});" >  </div>
-                        
+
 //                         <h2>${el.name}</h2>
 //                         <h3>price : ${el.price} </h3>
 //                         <h4> nuts : ${el.nuts} </h4>
@@ -22,7 +22,7 @@
 //                        <h4> vegetarian : ${el.vegeterian} </h4>
 //                         <a href="details.html?id=${el.id}"> See more </a>
 //             </div>
-         
+
 //             `
 //       }
 // }
@@ -39,7 +39,7 @@
 //       for(let el of arr) {
 //             sel.innerHTML += `
 
-      
+
 //       <option value="${el.id}"> ${el.name.toUpperCase()} </option>
 
 //             `
@@ -62,24 +62,27 @@
 // })
 
 
-
-
-
-
-
-
 let cont = document.querySelector('.cont');
 let sel = document.querySelector('.sel');
+let sel2 = document.querySelector('.sel2');
 
 
-fetch('https://restaurant.stepprojects.ge/api/Categories/GetAll') 
+fetch('https://restaurant.stepprojects.ge/api/Categories/GetAll')
     .then(resp => resp.json())
     .then(categories => fillOptions(categories))
 
 
+fetch(`https://restaurant.stepprojects.ge/api/Products/GetFiltered?category=${sel2.value}`)
+    .then(resp => resp.json())
+    .then(text => console.log(text))
+
+
+
+
+
 
 function fillOptions(categories) {
-    sel.innerHTML = '<option value="All">All</option>'; 
+    sel.innerHTML = '<option value="All">All</option>';
     for (let category of categories) {
         sel.innerHTML += `
             <option value="${category.id}">${category.name.toUpperCase()}</option>
@@ -88,23 +91,23 @@ function fillOptions(categories) {
 }
 
 
-sel.addEventListener("change", function() {
+sel.addEventListener("change", function () {
     if (sel.value === "All") {
         fetch('https://restaurant.stepprojects.ge/api/Products/GetAll')
             .then(res => res.json())
             .then(json => renderProducts(json))
-            
+
     } else {
         fetch(`https://restaurant.stepprojects.ge/api/Categories/GetCategory/${sel.value}`)
             .then(resp => resp.json())
-            .then(category => renderProducts(category.products)) 
-            
+            .then(category => renderProducts(category.products))
+
     }
 });
 
 
 function renderProducts(products) {
-    cont.innerHTML = ''; 
+    cont.innerHTML = '';
     for (let product of products) {
         cont.innerHTML += `
             <div class="box">
@@ -132,5 +135,4 @@ fetch('https://restaurant.stepprojects.ge/api/Products/GetAll')
 
 
 
-      
-          
+
