@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <style>
+        .box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+        }
+        .img-cont {
+            width: 100%;
+            height: 100px;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="sel-container">
+        <select class="sel"></select>
+        <button class="filter-nuts">Filter Nuts</button>
+        <button class="filter-spicy">Filter Spicy</button>
+        <button class="filter-vegetarian">Filter Vegetarian</button>
+    </div>
+    <div class="cont"></div>
+
+    <script>
+        let cont = document.querySelector('.cont');
+        let sel = document.querySelector('.sel');
+        let filterNutsButton = document.querySelector('.filter-nuts');
+        let filterSpicyButton = document.querySelector('.filter-spicy');
+        let filterVegetarianButton = document.querySelector('.filter-vegetarian');
+
+        // Fetch categories and fill the select options
+        fetch('https://restaurant.stepprojects.ge/api/Categories/GetAll') 
+            .then(resp => resp.json())
+            .then(categories => fillOptions(categories));
+
+        function fillOptions(categories) {
+            sel.innerHTML = '<option value="All">All</option>'; 
+            for (let category of categories) {
+                sel.innerHTML += `
+                    <option value="${category.id}">${category.name.toUpperCase()}</option>
+                `;
+            }
+        }
+
+        // Event listener for category selection
+        sel.addEventListener("change", function() {
+            if (sel.value === "All") {
+                fetch('https://restaurant.stepprojects.ge/api/Products/GetAll')
+                    .then(res => res.json())
+                    .then(json => renderProducts(json));
+            } else {
+                fetch(`https://restaurant.stepprojects.ge/api/Categories/GetCategory/${sel.value}`)
+                    .then(resp => resp.json())
+                    .then(category => renderProducts(category.products));
+            }
+        });
+
+        // Function to render products
+        function renderProducts(products) {
+            cont.innerHTML = ''; 
+            for (let product of products) {
+                cont.innerHTML += `
+                    <div class="box">
+                        <div class="img-cont" style="background-image: url(${product.image});"></div>
+                        <h2>${product.name}</h2>
+                        <h3>Price: ${product.price}</h3>
+                        <h4>Nuts: ${product.nuts ? 'Yes' : 'No'}</h4>
+                        <h3>Spiciness: ${product.spiciness}</h3>
+                        <h4>Vegetarian: ${product.vegeterian ? 'Yes' : 'No'}</h4>
+                        <a href="details.html?id=${product.id}">See more</a>
+                    </div>
+                `;
+            }
+        }
+
+        // Initial fetch to render all products
+        fetch('https://restaurant.stepprojects.ge/api/Products/GetAll')
+            .then(res => res.json())
+            .then(json => renderProducts(json));
+
+        // Event listener for filtering by nuts
+        filterNutsButton.addEventListener("click", function() {
+            fetch('https://restaurant.stepprojects.ge/api/Products/GetAll')
+                .then(res => res.json())
+                .then(products => {
+                    const filteredProducts = products.filter(product => product.nuts);
+                    renderProducts(filteredProducts);
+                });
+        });
+
+        // Event listener for filtering by spiciness
+        filterSpicyButton.addEventListener("click", function() {
+            fetch('https://restaurant.stepprojects.ge/api/Products/GetAll')
+                .then(res => res.json())
+                .then(products => {
+                    const filteredProducts = products.filter(product => product.spiciness > 0); // Adjust condition as needed
+                    renderProducts(filteredProducts);
+                });
+        });
+
+        // Event listener for filtering by vegetarian
+        filterVegetarianButton.addEventListener("click", function() {
+            fetch('https://restaurant.stepprojects.ge/api/Products/GetAll')
+                .then(res => res.json())
+                .then(products => {
+                    const filteredProducts = products.filter(product => product.vegeterian);
+                    renderProducts(filteredProducts);
+                });
+        });
+    </script>
+</body>
+</html>
