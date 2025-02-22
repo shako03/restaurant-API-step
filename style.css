@@ -188,7 +188,7 @@ header {
         /*     sel       */
 
 
-.sel {
+.sel , .sel2 , .sel3 , .sel4 , .sel5 {
       width: 200px; 
       padding: 8px 12px; 
       font-size: 16px; 
@@ -208,7 +208,6 @@ header {
   
 
   .sel::after {
-      content: ' ▼'; 
       font-size: 12px; 
       color: #007bff;
       position: absolute;
@@ -222,6 +221,11 @@ header {
       position: relative;
       display: inline-block;
       width: 200px;
+  }
+
+  .sel-box{
+    display: flex;
+    justify-content: center;
   }
   
 
