@@ -1,3 +1,5 @@
+// import { footer } from './footer/index.html';
+
 let cont = document.querySelector('.cont');
 
 let productId = window.location.search.split('=')[1];
