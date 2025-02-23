@@ -1,4 +1,17 @@
+
+
+
+
+
+
+
 // import { footer } from './footer/index.html';
+
+
+
+
+
+
 
 let cont = document.querySelector('.cont');
 
@@ -16,7 +29,7 @@ fetch('https://restaurant.stepprojects.ge/api/Products/GetAll')
 
 
 function renderProduct(productObj) {
-      cont.innerHTML = '';
+      cont.innerHTML = ''
             cont.innerHTML = `
             <div class="box">
                 <div class="img-cont" style="background-image: url(${productObj.image});"></div>
