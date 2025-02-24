@@ -5,7 +5,7 @@
 
 
 
-// import { footer } from './footer/index.html';
+import { footer } from './data.js';
 
 
 
@@ -16,7 +16,7 @@
 let cont = document.querySelector('.cont');
 
 let productId = window.location.search.split('=')[1];
-
+let foot = document.querySelector('.footer')
 
 
 fetch('https://restaurant.stepprojects.ge/api/Products/GetAll')  
@@ -47,3 +47,4 @@ function renderProduct(productObj) {
 
 
 
+foot.innerHTML += footer

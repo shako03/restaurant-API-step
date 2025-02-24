@@ -1,9 +1,12 @@
+import {footer} from './data.js'
+
 let cont = document.querySelector('.cont');
 let sel = document.querySelector('.sel');
 let sel2 = document.querySelector('.sel2');
 let sel3 = document.querySelector('.sel3');
 let sel4 = document.querySelector('.sel4');
 let sel5 = document.querySelector('.sel5');
+let foot = document.querySelector('.footer');
 
 
 fetch('https://restaurant.stepprojects.ge/api/Categories/GetAll')
@@ -22,6 +25,8 @@ function fillOptions(categories) {
     }
 }
 
+
+console.log(footer)
 
 sel.addEventListener("change", function () {
     if (sel.value === "All") {
@@ -48,58 +53,9 @@ fetch( 'https://restaurant.stepprojects.ge/api/Products/GetFiltered?vegeterian=t
 
  
     
- function fillOptionTwo(FilteredArr) {
-    sel3.innerHTML  = '<option value="vegeterian"></option>';
-    for(let forFilter of FilteredArr){
-        sel3.innerHTML += `
-        <option value="${forFilter.id}">${forFilter.name.toUpperCase()}</option>
-        `
-    }
- }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
- sel3.addEventListener("change", function () {
-    if (sel3.value === " som pam papaya salad ") {
-        // fetch('https://restaurant.stepprojects.ge/api/Products/GetAll')
-        //     .then(res => res.json())
-        //     .then(json => renderProducts(json))
-        console.log("hello")
-
-    } else {
-        // fetch(`https://restaurant.stepprojects.ge/api/Categories/GetCategory/${sel.value}`)
-        //     .then(resp => resp.json())
-        //     .then(category => renderProducts(category.products))
-        console.log("hello512512")
-
-    }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+foot.innerHTML += footer
 
 
 
@@ -114,10 +70,7 @@ function renderProducts(products) {
             <div class="box">
                 <div class="img-cont" style="background-image: url(${product.image});"></div>
                 <h2>${product.name}</h2>
-                <h3>Price: ${product.price}</h3>
-                <h4>Nuts: ${product.nuts}</h4>
-                <h3>Spiciness: ${product.spiciness}</h3>
-                <h4>Vegetarian: ${product.vegeterian}</h4>
+                <h3>Price : ${product.price} ₾</h3>
                 <a href="details.html?id=${product.id}">See more</a>
             </div>
         `;
