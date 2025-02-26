@@ -6,13 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        nav ul {
+            display: flex;
+            align-items: center;
+        }
+    </style>
 </head>
+
+
+
+
+
+
 
 <body>
 
     <header>
         <div class="logo">
+            <a href="index.html"></a>
             <img src="https://logowik.com/content/uploads/images/restaurant9491.logowik.com.webp" alt="">
             <h1>Restaurant Restaurant</h1>
         </div>
@@ -25,56 +42,53 @@
                         <div class="header-checkout-img">
                             <img src="https://media.istockphoto.com/id/1439702389/vector/shopping-cart.jpg?s=612x612&w=0&k=20&c=VH4_OgmkDC_iGcPvNe8v5QO_I5PLnYyWJx2glE7kli4="
                                 alt="" srcset="">
+                        </div>
                     </a>
-                    </div>
                 </li>
             </ul>
         </nav>
     </header>
 
-
-
-
-    <select class="sel">
-        <option value="All">All</option>
-    </select>
-
-
-    <div class="sel-box">
-
-
-        <select class="sel3">
-            <option value="vegeterian">vegeterian</option>
-        </select>
-
-
-
-        <select class="sel4">
-            <option value="">nuts</option>
-        </select>
-
-
-
-        <select class="sel5">
-            <option value="">spiciness</option>
+    <div class="center">
+        <label for="category-select">Select Categories</label>
+        <select id="category-select" class="sel">
+            <option value="All">Category</option>
         </select>
     </div>
 
+    <div class="sel-box">
 
+        <select name="" class="sel2">
 
+            <option value="All">Vegeterian</option>
+            <option value="true">True</option>
+            <option value="false">False</option>
 
+        </select>
+
+        <select name="" class="sel3">
+
+            <option value="All">Nuts</option>
+            <option value="true">True</option>
+            <option value="false">False</option>
+
+        </select>
+
+        <select name="" class="sel4">
+
+            <option value="All">Spiceness</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+
+        </select>
+
+    </div>
 
     <div class="cont"></div>
 
-
-
- 
-    <section class="footer">    </section>
-
-
-
-
-
+    <section class="footer"> </section>
 
     <script type="module" src="script.js"></script>
 </body>

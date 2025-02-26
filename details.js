@@ -1,15 +1,4 @@
-
-
-
-
-
-
-
 import { footer } from './data.js';
-
-
-
-
 
 
 

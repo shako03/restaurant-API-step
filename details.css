@@ -143,15 +143,7 @@ h4 {
 
 
 
-.cont {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-}
 
-.box {
-      width: 400px;
-}
 
 .box a {
       display: block;

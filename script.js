@@ -1,17 +1,59 @@
-import {footer} from './data.js'
+import { footer } from './data.js'
+
+let filtersArray = {};
 
 let cont = document.querySelector('.cont');
 let sel = document.querySelector('.sel');
-let sel2 = document.querySelector('.sel2');
-let sel3 = document.querySelector('.sel3');
-let sel4 = document.querySelector('.sel4');
-let sel5 = document.querySelector('.sel5');
-let foot = document.querySelector('.footer');
+let sel2 = document.querySelector('.sel2')
+let sel3 = document.querySelector('.sel3')
+let sel4 = document.querySelector('.sel4')
+
+document.querySelector('.footer').innerHTML += footer
 
 
-fetch('https://restaurant.stepprojects.ge/api/Categories/GetAll')
-    .then(resp => resp.json())
-    .then(categories => fillOptions(categories))
+
+
+
+function fetchCategories() {
+    fetch('https://restaurant.stepprojects.ge/api/Categories/GetAll')
+        .then(res => res.json())
+        .then(json => fillOptions(json))
+
+}
+
+
+
+
+
+function filterArray(addFilter) {
+    if (addFilter.value == "All") {
+        delete filtersArray[addFilter.key] 
+    } else {
+        
+        filtersArray[addFilter.key] = addFilter.value  
+    }
+
+    let url = `https://restaurant.stepprojects.ge/api/Products/GetFiltered`; 
+
+    url += '?' + Object.entries(filtersArray).map(([key, value]) => `${key}=${value}`).join('&');
+
+    fetch(url).then(resp => resp.json())
+        .then(resp => renderProducts(resp))
+}
+
+
+
+
+
+
+
+function getAll() {
+    fetch('https://restaurant.stepprojects.ge/api/Products/GetAll')
+        .then(res => res.json())
+        .then(json => renderProducts(json))
+}
+
+
 
 
 
@@ -26,39 +68,6 @@ function fillOptions(categories) {
 }
 
 
-console.log(footer)
-
-sel.addEventListener("change", function () {
-    if (sel.value === "All") {
-        fetch('https://restaurant.stepprojects.ge/api/Products/GetAll')
-            .then(res => res.json())
-            .then(json => renderProducts(json))
-
-    } else {
-        fetch(`https://restaurant.stepprojects.ge/api/Categories/GetCategory/${sel.value}`)
-            .then(resp => resp.json())
-            .then(category => renderProducts(category.products))
-
-    }
-});
-
-
-
-
-
-
-fetch( 'https://restaurant.stepprojects.ge/api/Products/GetFiltered?vegeterian=true')
-    .then(resp => resp.json())
-    .then(getFiltered => fillOptionTwo(getFiltered))
-
- 
-    
-
-
-foot.innerHTML += footer
-
-
-
 
 
 
@@ -70,19 +79,58 @@ function renderProducts(products) {
             <div class="box">
                 <div class="img-cont" style="background-image: url(${product.image});"></div>
                 <h2>${product.name}</h2>
-                <h3>Price : ${product.price} ₾</h3>
-                <a href="details.html?id=${product.id}">See more</a>
+                <h3>Price: ${product.price}</h3>
+                <h4>Nuts: ${product.nuts}</h4>
+                <h3>Spiciness: ${product.spiciness}</h3>
+                <h4>Vegetarian: ${product.vegeterian}</h4>
+                <a href="index.html?id=${product.id}">Go back</a>
             </div>
         `;
     }
 }
 
+sel.addEventListener("change", function () {
+    if (sel.value === "All") {
+        getAll();
+        filtersArray = {}
+        sel2.value = "All"   
+        sel3.value = "All"
+        sel4.value = "All"
+
+    } else {
+        filterArray({
+            key: "categoryId",
+            value: sel.value,
+        })
+
+    }
+});
+
+sel2.addEventListener("change", function () {
+    filterArray({
+        key: "vegeterian",
+        value: sel2.value, 
+    });
+})
+
+sel3.addEventListener("change", function () {
+    filterArray({
+        key: "nuts",
+        value: sel3.value,
+    });
+})
+
+sel4.addEventListener("change", function () {
+    filterArray({
+        key: "spiciness",
+        value: sel4.value
+    });
+})
 
 
 
-fetch('https://restaurant.stepprojects.ge/api/Products/GetAll')
-    .then(res => res.json())
-    .then(json => renderProducts(json))
+fetchCategories()
+getAll()
 
 
 
@@ -103,3 +151,55 @@ fetch('https://restaurant.stepprojects.ge/api/Products/GetAll')
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function filterProducts() {
+//     let url = 'https://restaurant.stepprojects.ge/api/Products/GetFiltered?';
+//     let params = [];
+
+
+//     if (vegeSel.value !== "-1") params.push(vegeterian=${vegeSel.value});
+//     if (spiciness.value !== "-1") params.push(spiciness=${spiciness.value});
+//     if (nuts.value !== "-1") params.push(nuts=${nuts.value});
+//     if (filtered.value !== "-1") params.push(categoryId=${filtered.value});
+
+//     if (params.length === 0) {
+//         renderProduct(unFillArr);
+//         return;
+//     }
+
+//     url += params.join('&');
+
+//     fetch(url)
+//         .then(response => response.json())
+//         .then(response => renderProduct(response))
+// }
+
+// vegeSel.addEventListener('change', filterProducts);
+// spiciness.addEventListener('change', filterProducts);
+// nuts.addEventListener('change', filterProducts);
+// filtered.addEventListener('change', filterProducts);
