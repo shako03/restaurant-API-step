@@ -28,7 +28,9 @@ function fetchCategories() {
 function filterArray(addFilter) {
     if (addFilter.value == "All") {
         delete filtersArray[addFilter.key] 
-    } else {
+    }
+     
+    else {
         
         filtersArray[addFilter.key] = addFilter.value  
     }
@@ -37,8 +39,9 @@ function filterArray(addFilter) {
 
     url += '?' + Object.entries(filtersArray).map(([key, value]) => `${key}=${value}`).join('&');
 
-    fetch(url).then(resp => resp.json())
-        .then(resp => renderProducts(resp))
+    fetch(url)
+    .then(resp => resp.json())
+    .then(resp => renderProducts(resp))
 }
 
 
@@ -83,7 +86,7 @@ function renderProducts(products) {
                 <h4>Nuts: ${product.nuts}</h4>
                 <h3>Spiciness: ${product.spiciness}</h3>
                 <h4>Vegetarian: ${product.vegeterian}</h4>
-                <a href="index.html?id=${product.id}">Go back</a>
+                <a href="details.html?id=${product.id}">See Details</a>
             </div>
         `;
     }

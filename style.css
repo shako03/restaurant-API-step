@@ -76,54 +76,15 @@ header {
   }
 
 
-
-/* 
-.cont {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 50px;
-      flex-wrap: wrap;
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-.cont .box {
-      width: 300px;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
-      border-radius: 10px;
-
+nav ul {
+    display: flex;
+    align-items: center;
 }
-
-.img-cont {
-      width: 100%;
-      height: 300px;
-      background-size: cover;
-}
-
-.cont .box img {
-      width: 100%;
-      background-image: url();
-}
-
-
-.box a {
-      display: block;
-      width: 50%;
-      height: 30px;
-      text-decoration: none;
-      color: black;
-      font-size: 20px;
-      font-weight: bold;
-      border: 2px solid orange;
-      border-radius: 5px;
-}
-
-.box a:hover {
-      background-color: orange;
-      color: white;
-      border-color: #2980b9;
-} */
-
-
 
 
 .cont {
@@ -287,7 +248,7 @@ h4 {
 
 
 .sel , .sel2 , .sel3 , .sel4 , .sel5 {
-      width: 200px; 
+      width: 250px; 
       padding: 8px 12px; 
       font-size: 16px; 
       border: 1px solid #ccc; 
@@ -297,7 +258,14 @@ h4 {
 
       margin: 20px 5px;
   }
-  
+
+ 
+.sel2:focus, .sel3:focus, .sel4:focus {
+    outline: none; 
+    border-color: #007BFF; 
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); 
+}
+
 
   .sel:focus {
       border-color: #007bff; 
@@ -329,4 +297,8 @@ h4 {
 
 
 
-  
+
+
+
+
+
