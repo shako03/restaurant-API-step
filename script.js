@@ -120,11 +120,10 @@ function renderProducts(products) {
                 <h3>Price: ${product.price}</h3>
                 <h4>Nuts: ${product.nuts}</h4>
                 <h3>Spiciness: ${product.spiciness}</h3>
-                <h4>Vegetarian: ${product.vegetarian}</h4>
+                <h4>Vegetarian: ${product.vegeterian}</h4>
 
                 <div class="btn-parent">
                     <a href="details.html?id=${product.id}">See Details</a>
-                    <!-- Order Now Button -->
                     <button class="order-now" data-product-id="${product.id}" data-price="${product.price}">Order Now</button>
                 </div>
             </div>
@@ -163,6 +162,9 @@ function renderProducts(products) {
         });
     });
 }
+
+
+
 
 
 
@@ -216,31 +218,31 @@ getAll()
 
 
 
-// const popup = document.getElementById('popup');
-// const closePopupBtn = document.getElementById('closePopup');
-// const closePopupBtn2 = document.getElementById('closePopupBtn');
+const popup = document.getElementById('popup');
+const closePopupBtn = document.getElementById('closePopup');
+const closePopupBtn2 = document.getElementById('closePopupBtn');
 
-// function showPopup() {
-//   popup.style.display = 'flex';
-// }
-
-
-// setTimeout(showPopup, 3000);
-
-// closePopupBtn.onclick = function() {
-//   popup.style.display = 'none';
-// }
+function showPopup() {
+  popup.style.display = 'flex';
+}
 
 
-// closePopupBtn2.onclick = function() {
-//   popup.style.display = 'none';
-// }
+setTimeout(showPopup, 3000);
 
-// window.onclick = function(event) {
-//   if (event.target === popup) {
-//     popup.style.display = 'none';
-//   }
-// }
+closePopupBtn.onclick = function() {
+  popup.style.display = 'none';
+}
+
+
+closePopupBtn2.onclick = function() {
+  popup.style.display = 'none';
+}
+
+window.onclick = function(event) {
+  if (event.target === popup) {
+    popup.style.display = 'none';
+  }
+}
 
 
 
