@@ -4,94 +4,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title> 
+    <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
+
 <body>
 
 
     <div id="popup" class="popup">
         <div class="popup-content">
-          <span id="closePopup" class="close-btn">&times;</span>
-          <h2>Welcome to [Restaurant Name]!</h2>
-          <p>Enjoy our special dishes today!</p>
-          
-          
-          <h3>Special Offer: 20% Off Your First Order!</h3>
-          <p>Use code <strong>WELCOME20</strong> when ordering online.</p>
-          
-        
-  
-          
-          <p>Or, call us at <strong>(555) 123-4567</strong> to make a reservation.</p>
-        </div>
-      </div>
+            <span id="closePopup" class="close-btn">&times;</span>
+            <h2>Welcome to [Restaurant Name]!</h2>
+            <p>Enjoy our special dishes today!</p>
+            <div class="img-src">
+                <img src="https://i.pinimg.com/564x/7f/55/da/7f55da089f25976106d8433159d1e1a0.jpg" alt="" srcset="">
+            </div>
 
-<a href="basket.html">erwgegwewe</a>
+
+            <h3>Special Offer: 20% Off Your First Order!</h3>
+            <p>Use code <strong>WELCOME20</strong> when ordering online.</p>
+
+
+
+
+            <p>Or, call us at <strong>(555) 123-4567</strong> to make a reservation.</p>
+        </div>
+    </div>
+
+
 
     <header>
         <div class="logo">
             <a href="index.html"></a>
-            <img src="https://logowik.com/content/uploads/images/restaurant9491.logowik.com.webp" alt="">
-            <h1>Restaurant Restaurant</h1>
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D" alt="">
+            <a style="text-decoration: none; list-style-type: none; color: white;" href="index.html">
+                <h1>Restaurant Restaurant</h1>
+            </a>
+                
         </div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="#menu">Menu</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a class="" href="">
+                <li><a class="basket.html" href="">
                         <div class="header-checkout-img">
-                            <i style="font-size: 35px;" class="fa-solid fa-cart-shopping"></i>                                
+                            <a href="basket.html">
+                                <i style="font-size: 35px;" class="fa-solid fa-cart-shopping"></i>
+                            </a>
                         </div>
+
                     </a>
                 </li>
             </ul>
         </nav>
     </header>
 
+<main>
+
+    <div class="leftside">
+        <div class="center">
+            <label for="category-select"></label>
+            <select id="category-select" class="sel">
+                <option value="All">Category</option>
+            </select>
+        </div>
     
-
-    <div class="center">
-        <label for="category-select">Select Categories</label>
-        <select id="category-select" class="sel">
-            <option value="All">Category</option>
-        </select>
+        <div class="sel-box">
+    
+            <select name="" class="sel2">
+    
+                <option value="All">Vegeterian</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+    
+            </select>
+    
+            <select name="" class="sel3">
+    
+                <option value="All">Nuts</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+    
+            </select>
+    
+            <select name="" class="sel4">
+    
+                <option value="All">Spiceness</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+    
+            </select>
+    
+        </div>
     </div>
-
-    <div class="sel-box">
-
-        <select name="" class="sel2">
-
-            <option value="All">Vegeterian</option>
-            <option value="true">True</option>
-            <option value="false">False</option>
-
-        </select>
-
-        <select name="" class="sel3">
-
-            <option value="All">Nuts</option>
-            <option value="true">True</option>
-            <option value="false">False</option>
-
-        </select>
-
-        <select name="" class="sel4">
-
-            <option value="All">Spiceness</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-
-        </select>
-
+    
+    <div class="right-side">
+        <div class="cont"></div>
     </div>
+</main>
 
-    <div class="cont"></div>
 
     <section class="footer"> </section>
 

@@ -9,8 +9,6 @@ let sel3 = document.querySelector('.sel3')
 let sel4 = document.querySelector('.sel4')
 let productId = window.location.search.split('=')[1]
 
-// let btn = document.querySelector('.order-now')
-
 
 
 document.querySelector('.footer').innerHTML += footer
@@ -124,7 +122,7 @@ function renderProducts(products) {
 
                 <div class="btn-parent">
                     <a href="details.html?id=${product.id}">See Details</a>
-                    <button class="order-now" data-product-id="${product.id}" data-price="${product.price}">Order Now</button>
+                    <button class="order-now" data-product-id="${product.id}" data-price="${product.price}">Add To Cart</button>
                 </div>
             </div>
         `;
@@ -234,9 +232,7 @@ closePopupBtn.onclick = function() {
 }
 
 
-closePopupBtn2.onclick = function() {
-  popup.style.display = 'none';
-}
+
 
 window.onclick = function(event) {
   if (event.target === popup) {
