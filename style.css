@@ -316,7 +316,7 @@ h4 {
     display: none;
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
@@ -420,4 +420,12 @@ main {
     .right-side {
         margin-top: 200px;
     }
+}
+
+.img-article-1{
+background-image: url('https://static.vecteezy.com/system/resources/previews/054/611/336/non_2x/wide-angle-foodgraphy-for-restaurant-with-copy-space-photo.jpg');
+background-size: cover;
+background-position: center;
+height: 400px;
+width: 100%;
 }
