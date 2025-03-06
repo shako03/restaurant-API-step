@@ -99,54 +99,180 @@
 
 
 
-let cont = document.querySelector('.cont')
+// let cont = document.querySelector('.cont')
+
+// fetch('https://restaurant.stepprojects.ge/api/Baskets/GetAll')
+//   .then(resp => resp.json())
+//   .then(resp => renderBasket(resp))
+
+// function renderBasket(arr) {
+//   let totalPrice = 0;  
+
+//   for (let el of arr) {
+//     let basketDiv = document.createElement('div')
+//     basketDiv.classList.add('basket')
+//     basketDiv.innerHTML = `
+//       <div class="basket">
+//         <img src = "${el.product.image}" alt = "">
+//         <h3> ${el.product.name}</h3>
+//         <h4>price : ${el.product.price}$</h4>
+//         <h4>quantity: ${el.quantity}</h4>
+//       </div>
+//     `
+
+
+//     totalPrice += el.product.price * el.quantity;
+
+//     let deleteBtn = document.createElement('button')
+//     deleteBtn.innerHTML = 'Delete'
+//     deleteBtn.addEventListener('click', function (e) {
+//       e.preventDefault()
+
+
+//       fetch(`https://restaurant.stepprojects.ge/api/Baskets/DeleteProduct/${el.product.id}`, {
+//         method: 'DELETE'
+//       })
+//         .then(resp => resp.json())
+//         .then(resp => {
+//           basketDiv.remove()
+
+//           totalPrice -= el.product.price * el.quantity;
+//           updateTotalPrice();
+//         })
+//         .catch(err => console.log('error', err))
+//     })
+
+//     basketDiv.appendChild(deleteBtn)
+//     cont.appendChild(basketDiv)
+//   }
+
+
+
+//   const totalDiv = document.createElement('div');
+//   totalDiv.classList.add('total-price');
+//   totalDiv.innerHTML = `<h4>Total Price: ${totalPrice}$</h4>`;
+//   totalDiv.style.color = 'white';
+//   cont.appendChild(totalDiv);
+
+
+//   function updateTotalPrice() {
+//     totalDiv.innerHTML = `<h4>Total Price: ${totalPrice}$</h4>`;
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let cont = document.querySelector('.cont');
+
+// fetch('https://restaurant.stepprojects.ge/api/Baskets/GetAll')
+//   .then(resp => resp.json())
+//   .then(resp => renderBasket(resp));
+
+// function renderBasket(arr) {
+//   let totalPrice = 0;
+//   cont.innerHTML = '';
+
+//   for (let el of arr) {
+//     let basketDiv = document.createElement('div');
+//     basketDiv.classList.add('basket');
+//     basketDiv.innerHTML = `
+//       <div class="basket">
+//         <img src="${el.product.image}" alt="">
+//         <h3>${el.product.name}</h3>
+//         <h4>Price: ${el.product.price}$</h4>
+//         <h4>Quantity: ${el.quantity}</h4>
+//       </div>
+//     `;
+
+//     totalPrice += el.product.price * el.quantity;
+
+//     let deleteBtn = document.createElement('button');
+//     deleteBtn.innerHTML = 'Delete';
+//     deleteBtn.addEventListener('click', function (e) {
+//       e.preventDefault();
+
+
+//       if (confirm(`დარწმუნებული ხარ რომ გინდა წაშალო ${el.product.name}?`)) {
+//         fetch(`https://restaurant.stepprojects.ge/api/Baskets/DeleteProduct/${el.product.id}`, {
+//           method: 'DELETE'
+//         })
+//           .then(resp => resp.json())
+//           .then(resp => {
+//             basketDiv.remove();
+//             totalPrice -= el.product.price * el.quantity;
+//             updateTotalPrice();
+//           })
+//           .catch(err => console.log('error', err));
+//       }
+//     });
+
+//     basketDiv.appendChild(deleteBtn);
+//     cont.appendChild(basketDiv);
+//   }
+
+//   const totalDiv = document.createElement('div');
+//   totalDiv.classList.add('total-price');
+//   totalDiv.innerHTML = `<h4>Total Price: ${totalPrice}$</h4>`;
+//   totalDiv.style.color = 'white';
+//   cont.appendChild(totalDiv);
+
+//   function updateTotalPrice() {
+//     totalDiv.innerHTML = `<h4>Total Price: ${totalPrice}$</h4>`;
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+let cont = document.querySelector('.cont');
 
 fetch('https://restaurant.stepprojects.ge/api/Baskets/GetAll')
   .then(resp => resp.json())
-  .then(resp => renderBasket(resp))
+  .then(resp => renderBasket(resp));
 
 function renderBasket(arr) {
-  let totalPrice = 0;  
+  let totalPrice = 0;
+  cont.innerHTML = '';
 
   for (let el of arr) {
-    let basketDiv = document.createElement('div')
-    basketDiv.classList.add('basket')
+    let basketDiv = document.createElement('div');
+    basketDiv.classList.add('basket');
     basketDiv.innerHTML = `
       <div class="basket">
-        <img src = "${el.product.image}" alt = "">
-        <h3> ${el.product.name}</h3>
-        <h4>price : ${el.product.price}$</h4>
-        <h4>quantity: ${el.quantity}</h4>
+        <img src="${el.product.image}" alt="">
+        <h3>${el.product.name}</h3>
+        <h4>Price: ${el.product.price}$</h4>
+        <h4>Quantity: ${el.quantity}</h4>
       </div>
-    `
-
+    `;
 
     totalPrice += el.product.price * el.quantity;
 
-    let deleteBtn = document.createElement('button')
-    deleteBtn.innerHTML = 'Delete'
-    deleteBtn.addEventListener('click', function (e) {
-      e.preventDefault()
+    let deleteBtn = document.createElement('button');
+    deleteBtn.innerHTML = 'Delete';
+    deleteBtn.addEventListener('click', () => deleteProduct(el, basketDiv));
 
-
-      fetch(`https://restaurant.stepprojects.ge/api/Baskets/DeleteProduct/${el.product.id}`, {
-        method: 'DELETE'
-      })
-        .then(resp => resp.json())
-        .then(resp => {
-          basketDiv.remove()
-
-          totalPrice -= el.product.price * el.quantity;
-          updateTotalPrice();
-        })
-        .catch(err => console.log('error', err))
-    })
-
-    basketDiv.appendChild(deleteBtn)
-    cont.appendChild(basketDiv)
+    basketDiv.appendChild(deleteBtn);
+    cont.appendChild(basketDiv);
   }
-
-  
 
   const totalDiv = document.createElement('div');
   totalDiv.classList.add('total-price');
@@ -154,8 +280,22 @@ function renderBasket(arr) {
   totalDiv.style.color = 'white';
   cont.appendChild(totalDiv);
 
-
   function updateTotalPrice() {
     totalDiv.innerHTML = `<h4>Total Price: ${totalPrice}$</h4>`;
+  }
+
+  function deleteProduct(el, basketDiv) {
+    if (confirm(`დარწმუნებული ხარ რომ გინდა წაშალო ${el.product.name}?`)) {
+      fetch(`https://restaurant.stepprojects.ge/api/Baskets/DeleteProduct/${el.product.id}`, {
+        method: 'DELETE'
+      })
+        .then(resp => resp.json())
+        .then(() => {
+          basketDiv.remove();
+          totalPrice -= el.product.price * el.quantity;
+          updateTotalPrice();
+        })
+        .catch(err => console.log('error', err));
+    }
   }
 }

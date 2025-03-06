@@ -7,47 +7,9 @@ let sel = document.querySelector('.sel');
 let sel2 = document.querySelector('.sel2')
 let sel3 = document.querySelector('.sel3')
 let sel4 = document.querySelector('.sel4')
-let productId = window.location.search.split('=')[1]
-
 
 
 document.querySelector('.footer').innerHTML += footer
-
-
-
-
-// let newProduct = []
-
-// btn.addEventListener('click', function (e) {
-//     e.preventDefault()
-//     let btnData = {
-//         quantity: 1,
-//         price: 10,
-//         productId: productId
-//     }
-
-//     fetch(`https://restaurant.stepprojects.ge/api/Baskets/AddToBasket`, {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-
-//         },
-//         body: JSON.stringify(btnData)
-//     }).then(resp => resp.json())
-//     .then(resp => {
-//         newProduct.push(resp)
-//     })
-//     console.log(newProduct)
-// })
-
-
-
-
-
-
-
-
-
 
 
 function fetchCategories() {
