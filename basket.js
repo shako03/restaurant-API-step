@@ -268,7 +268,13 @@ function renderBasket(arr) {
 
     let deleteBtn = document.createElement('button');
     deleteBtn.innerHTML = 'Delete';
-    deleteBtn.addEventListener('click', () => deleteProduct(el, basketDiv));
+    try {
+      deleteBtn.addEventListener('click', () => deleteProduct(el, basketDiv));
+    }
+    catch(err) {
+      console.log('error' , err)
+      deleteProduct(el, basketDiv)
+    }
 
     basketDiv.appendChild(deleteBtn);
     cont.appendChild(basketDiv);
@@ -289,7 +295,7 @@ function renderBasket(arr) {
       fetch(`https://restaurant.stepprojects.ge/api/Baskets/DeleteProduct/${el.product.id}`, {
         method: 'DELETE'
       })
-        .then(resp => resp.json())
+    //  .then(resp => resp.json())
         .then(() => {
           basketDiv.remove();
           totalPrice -= el.product.price * el.quantity;

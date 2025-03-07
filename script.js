@@ -77,7 +77,7 @@ function renderProducts(products) {
             <div class="box">
                 <div class="img-cont" style="background-image: url(${product.image});"></div>
                 <h2>${product.name}</h2>
-                <h3>Price: ${product.price}</h3>
+                <h3>Price: ${product.price}$</h3>
                 <h4>Nuts: ${product.nuts}</h4>
                 <h3>Spiciness: ${product.spiciness}</h3>
                 <h4>Vegetarian: ${product.vegeterian}</h4>
@@ -180,7 +180,7 @@ getAll()
 
 const popup = document.getElementById('popup');
 const closePopupBtn = document.getElementById('closePopup');
-const closePopupBtn2 = document.getElementById('closePopupBtn');
+
 
 function showPopup() {
   popup.style.display = 'flex';
@@ -230,44 +230,3 @@ window.onclick = function(event) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function filterProducts() {
-//     let url = 'https://restaurant.stepprojects.ge/api/Products/GetFiltered?';
-//     let params = [];
-
-
-//     if (vegeSel.value !== "-1") params.push(vegeterian=${vegeSel.value});
-//     if (spiciness.value !== "-1") params.push(spiciness=${spiciness.value});
-//     if (nuts.value !== "-1") params.push(nuts=${nuts.value});
-//     if (filtered.value !== "-1") params.push(categoryId=${filtered.value});
-
-//     if (params.length === 0) {
-//         renderProduct(unFillArr);
-//         return;
-//     }
-
-//     url += params.join('&');
-
-//     fetch(url)
-//         .then(response => response.json())
-//         .then(response => renderProduct(response))
-// }
-
-// vegeSel.addEventListener('change', filterProducts);
-// spiciness.addEventListener('change', filterProducts);
-// nuts.addEventListener('change', filterProducts);
-// filtered.addEventListener('change', filterProducts);
