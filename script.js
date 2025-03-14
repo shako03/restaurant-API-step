@@ -118,6 +118,7 @@ function renderProducts(products) {
                 .then(resp => resp.json())
                 .then(resp => {
                     console.log('Product added to basket:', resp);
+                    alert('Product added to basket');
                 })
         });
     });
