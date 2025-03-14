@@ -44,12 +44,21 @@ function renderBasket(arr) {
       e.preventDefault();
 
 
+<<<<<<< HEAD
       let updatedQuantity = el.quantity + 1;
 
       let requestBody = {
         quantity: updatedQuantity,
         price: el.product.price,
         productId: el.product.id
+=======
+      let updatedQuantity = el.quantity + 1; 
+
+      let requestBody = {
+        quantity: updatedQuantity, 
+        price: el.product.price,   
+        productId: el.product.id    
+>>>>>>> 34fff188f45e9df29c7919d50756440877732f9c
       };
 
       fetch(`https://restaurant.stepprojects.ge/api/Baskets/UpdateBasket`, {
@@ -60,11 +69,52 @@ function renderBasket(arr) {
         body: JSON.stringify(requestBody)
       })
         .then(() => {
+<<<<<<< HEAD
           el.quantity = updatedQuantity;
           basketDiv.querySelector('.quantity').innerHTML = `Quantity: ${el.quantity}`;
           updateTotalPrice();
         })
     });
+=======
+          el.quantity = updatedQuantity;  
+          basketDiv.querySelector('.quantity').innerHTML = `Quantity: ${el.quantity}`;  
+          updateTotalPrice(); 
+        })
+    });
+
+
+
+
+
+
+
+
+    minusBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      
+      let updatedQuantity = el.quantity > 0 ? el.quantity - 1 : 0; 
+
+      let requestBody = {
+        quantity: updatedQuantity,  
+        price: el.product.price,    
+        productId: el.product.id    
+      };
+
+      fetch(`https://restaurant.stepprojects.ge/api/Baskets/UpdateBasket`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+      })
+      .then(() => {
+        el.quantity = updatedQuantity;  
+        basketDiv.querySelector('.quantity').innerHTML = `Quantity: ${el.quantity}`;  
+        updateTotalPrice();  
+      })
+
+    });
+>>>>>>> 34fff188f45e9df29c7919d50756440877732f9c
 
 
 
@@ -112,6 +162,7 @@ function renderBasket(arr) {
       btn.style.margin = '5px';
     };
     
+<<<<<<< HEAD
     styleBtn(minusBtn);
     styleBtn(deleteBtn);
     styleBtn(plusBtn);
@@ -119,6 +170,9 @@ function renderBasket(arr) {
 
 
     basketDiv.appendChild(minusBtn);
+=======
+basketDiv.appendChild(minusBtn);
+>>>>>>> 34fff188f45e9df29c7919d50756440877732f9c
     basketDiv.appendChild(deleteBtn);
     basketDiv.appendChild(plusBtn);
     cont.appendChild(basketDiv);
